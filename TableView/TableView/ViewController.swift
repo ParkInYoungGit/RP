@@ -21,9 +21,15 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
     
     
     override func viewDidLoad() {
-        
-        print("viewdidload")
         super.viewDidLoad()
+        // data 불러오기
+        if let data = UserDefaults.standard.value(forKey:"workOutList") as? Data {
+            let users = try? PropertyListDecoder().decode([Users].self, from: data)
+            workOutList = users!
+        }
+            
+        print("viewdidload")
+        
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let date = DateFormatter()
         date.locale = Locale(identifier: "ko")
@@ -33,27 +39,32 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
         calendarSetup()
         selecteDate = date.string(from: Date())
         currentDate = date.string(from: Date())
+
+
         
-        
-        // Delegate = self -> 제스쳐, UI
-        tableListView.delegate = self
-        
-        // DataSource = self -> 데이터관리
-        tableListView.dataSource = self
-        
-        
-        if let data = UserDefaults.standard.value(forKey:"workOutList") as? Data {
-            let users = try? PropertyListDecoder().decode([Users].self, from: data)
-            workOutList = users!
+
             
+        calendarEvent()
+            // Delegate = self -> 제스쳐, UI
+            tableListView.delegate = self
             
+            // DataSource = self -> 데이터관리
+            tableListView.dataSource = self
+    }
+    
+
+    func calendarEvent (){
+        if workOutList.count == 0 {
+            
+        } else {
             for i in 0...workOutList.count - 1 {
                 eventDate.append(dateFormatter.date(from:workOutList[i].date!)!)
             }
-            print("view did Load\(eventDate)")
         }
     }
-
+    
+    
+    
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         selecteDate = dateFormatter.string(from: date)
         tableListView.reloadData()
@@ -101,19 +112,6 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
             return workOutList.count
         }
 
-        override func viewWillAppear(_ animated: Bool) {
-            if let data = UserDefaults.standard.value(forKey:"workOutList") as? Data {
-                let users = try? PropertyListDecoder().decode([Users].self, from: data)
-                workOutList = users!
-            }
-            tableListView.reloadData()
-            print("viewcontroller viewWillAppear\(workOutList)")
-        }
-        
-        override func viewWillDisappear(_ animated: Bool) {
-            print("viewcontroller viewWillDissAppear")
-            tableListView.reloadData()
-        }
         
         
         /// tableView에 cell 어떤 cell로 구성할지 설정하는 프로토콜 메소드
@@ -136,7 +134,24 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
             
             return cell
         }
-
+        
+        override func viewWillAppear(_ animated: Bool) {
+            tableListView.reloadData()
+            // data 불러오기
+            if let data = UserDefaults.standard.value(forKey:"workOutList") as? Data {
+                let users = try? PropertyListDecoder().decode([Users].self, from: data)
+                workOutList = users!
+            }
+        }
+        
+        override func viewWillDisappear(_ animated: Bool) {
+            print("viewcontroller viewWillDissAppear")
+            tableListView.reloadData()
+            let userDefaults = UserDefaults.standard
+            UserDefaults.standard.set(try? PropertyListEncoder().encode(workOutList), forKey:"workOutList")
+            userDefaults.synchronize()  // 동기화
+        }
+        
         override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
                 // Get the new view controller using segue.destination.
                 // Pass the selected object to the new view controller.
@@ -158,6 +173,6 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
             
         }
         
-    }
+    } //-----------------
 
 

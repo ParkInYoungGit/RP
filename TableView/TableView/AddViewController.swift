@@ -6,7 +6,7 @@
 //
 
 import UIKit
-var workOutList = [Users]()
+//var workOutList = [Users]()
 
 class AddViewController: UIViewController {
     

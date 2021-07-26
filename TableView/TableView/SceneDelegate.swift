@@ -16,6 +16,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+//        let checkAlert = UIAlertController(title: "알림", message: "오늘도 열심히 운동해보세요 ! 💪", preferredStyle: UIAlertController.Style.alert)
+//        let onAction = UIAlertAction(title: "확인", style: UIAlertAction.Style.default, handler: nil)
+//        checkAlert.addAction(onAction)
+//            //self.present(checkAlert, animated: true, completion: nil)
 
         guard let _ = (scene as? UIWindowScene) else { return }
     }

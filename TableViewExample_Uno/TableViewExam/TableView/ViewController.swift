@@ -39,14 +39,22 @@ class ViewController: UIViewController {
     "배경화면", "Siri 및 rjator","에어플레인 모드", "Wi-Fi", "Bluetooth", "셀룰러", "개인용 핫스팟",
     "알림", "사운드 및 햅틱" , "방해금지 모드", "스크린 타임", "일반", "제어 센터", "디스플레이 및 밝기", "홈화면", "손쉬운 사용",
     "배경화면", "Siri 및 rjator"]
-    var boolArr = [true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true]
+    var boolArr = [Bool]()
     
 
     private let testLabel = UILabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("\(boolArr.count)")
+
+        for i in 0...dataArr.count - 1{
+            boolArr.append(true)
+        }
+
+        let checkMark = UserDefaults.standard
+        let checkArray = checkMark.array(forKey: "items")as? [Bool] ?? [Bool]()
+        boolArr = checkArray
+        
         selected = Array<Int>(repeating: 0, count: dataArr.count)
         // 3) tableView Delegate와 DataSource를 채택한다.
         /* (아래 Extension을 통해 두 개의 프로토콜을 채택한다.)
@@ -61,6 +69,22 @@ class ViewController: UIViewController {
         
         // 4) tableViewcell을 등록한다. (따로 UITableviewCell 파일을 만든 경우 등록해야한다.) 
         tableView.register(UINib(nibName: "ExamTableViewCell", bundle: nil), forCellReuseIdentifier: "ExamCell")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
+        let checkMark = UserDefaults.standard
+        let checkArray = checkMark.array(forKey: "items")as? [Bool] ?? [Bool]()
+        boolArr = checkArray
+    }
+    
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        let userDefaults = UserDefaults.standard
+        userDefaults.set(boolArr, forKey: "items") // 키, value 설정
+        userDefaults.synchronize()
+        
+        print("\(boolArr)")
     }
 }
 
@@ -107,7 +131,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource,  ExamTable
             tableView.reloadRows(at: [selectedIndexPath], with: .automatic)
         }
     }
-
+    
+  
     
     
     

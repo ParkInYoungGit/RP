@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		007B6A9926AE66AA00B8FFF9 /* Add2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007B6A9826AE66A900B8FFF9 /* Add2ViewController.swift */; };
 		6F86783526AAEF2800A00685 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F86783326AAEF2800A00685 /* FirstViewController.swift */; };
 		6F86783626AAEF2800A00685 /* FirstViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F86783426AAEF2800A00685 /* FirstViewController.xib */; };
 		6F86783926AAEF7A00A00685 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F86783726AAEF7A00A00685 /* SecondViewController.swift */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		007B6A9826AE66A900B8FFF9 /* Add2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Add2ViewController.swift; sourceTree = "<group>"; };
 		15BB0096BCFECF05E80BBDC2 /* Pods_TableView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TableView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DCA0CEB780E0DA06A4AB0F1 /* Pods-TableView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TableView.release.xcconfig"; path = "Target Support Files/Pods-TableView/Pods-TableView.release.xcconfig"; sourceTree = "<group>"; };
 		6F86783326AAEF2800A00685 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 				6F86783826AAEF7A00A00685 /* SecondViewController.xib */,
 				6F86783D26AB190C00A00685 /* TableViewController.swift */,
 				6F86783F26AB22B500A00685 /* DetailViewController.swift */,
+				007B6A9826AE66A900B8FFF9 /* Add2ViewController.swift */,
 			);
 			path = TableView;
 			sourceTree = "<group>";
@@ -240,6 +243,7 @@
 				6F8F840B26AA912300C7F51F /* AddViewController.swift in Sources */,
 				6F8F83D926A99A4400C7F51F /* SceneDelegate.swift in Sources */,
 				6F86783C26AB17F200A00685 /* Users.swift in Sources */,
+				007B6A9926AE66AA00B8FFF9 /* Add2ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

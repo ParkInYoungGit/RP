@@ -81,6 +81,7 @@ class TableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         tvlistView.reloadData()
+        // data 저장
         let userDefaults = UserDefaults.standard
         UserDefaults.standard.set(try? PropertyListEncoder().encode(workOutList), forKey:"workOutList")
         userDefaults.synchronize()
@@ -90,6 +91,7 @@ class TableViewController: UITableViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         tvlistView.reloadData()
+        // data 저장
         let userDefaults = UserDefaults.standard
         UserDefaults.standard.set(try? PropertyListEncoder().encode(workOutList), forKey:"workOutList")
         userDefaults.synchronize()  // 동기화
