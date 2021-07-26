@@ -39,13 +39,15 @@ class ViewController: UIViewController {
     "배경화면", "Siri 및 rjator","에어플레인 모드", "Wi-Fi", "Bluetooth", "셀룰러", "개인용 핫스팟",
     "알림", "사운드 및 햅틱" , "방해금지 모드", "스크린 타임", "일반", "제어 센터", "디스플레이 및 밝기", "홈화면", "손쉬운 사용",
     "배경화면", "Siri 및 rjator"]
+    var boolArr = [true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true]
+    
 
     private let testLabel = UILabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("\(boolArr.count)")
         selected = Array<Int>(repeating: 0, count: dataArr.count)
-        
         // 3) tableView Delegate와 DataSource를 채택한다.
         /* (아래 Extension을 통해 두 개의 프로토콜을 채택한다.)
         "Extension"은 ViewController의 코드블럭을 나누는 방법으로
@@ -93,26 +95,22 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource,  ExamTable
         
         // cell에 데이터를 전달한다.
         cell.titleLabel.text = dataArr[indexPath.row]
-        cell.index = indexPath.row
-        
-        
-        if selected[indexPath.row] == 1 {
-            cell.customSwitch.isOn = true
-        } else {
-            cell.customSwitch.isOn = false
-        }
+        cell.customSwitch.isOn = boolArr[indexPath.row]
+
         
         return cell
     }
     
-    func didSelect(for index: Int, select: Bool) {
-        if select == true{
-            selected[index] = 1
-        } else {
-            selected[index] = 0
+    func didSelect(sender: ExamTableViewCell){
+        if let selectedIndexPath = tableView.indexPath(for: sender){
+            boolArr[selectedIndexPath.row] = !boolArr[selectedIndexPath.row]
+            tableView.reloadRows(at: [selectedIndexPath], with: .automatic)
         }
     }
 
-}
+    
+    
+    
+}//----------------------------------
 
 

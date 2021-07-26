@@ -8,7 +8,7 @@
 import UIKit
 import FSCalendar
 
-class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource {
+class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource{
     
     @IBOutlet var tableListView: UITableView!
     @IBOutlet weak var calendar: FSCalendar!
@@ -17,7 +17,7 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
     var selecteDate = ""
     var currentDate = ""
     let dateFormatter = DateFormatter()
-    var eventDate : [String] = []
+    var eventDate : [Date] = []
     
     
     override func viewDidLoad() {
@@ -42,15 +42,15 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
         tableListView.dataSource = self
         
         
-
-        
-        
-        
         if let data = UserDefaults.standard.value(forKey:"workOutList") as? Data {
             let users = try? PropertyListDecoder().decode([Users].self, from: data)
             workOutList = users!
-            print("view did Load\(users)")
             
+            
+            for i in 0...workOutList.count - 1 {
+                eventDate.append(dateFormatter.date(from:workOutList[i].date!)!)
+            }
+            print("view did Load\(eventDate)")
         }
     }
 
@@ -73,24 +73,26 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
     }
 
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
+
+                if self.eventDate.contains(date){
+                    return workOutList.count
+                } ;return 0
+    }
         
-            for i in 0...workOutList.count - 1 {
-                if self.eventDate.contains(workOutList[i].date){
-                 return 1
-                }
-            }
-        return 0
-            }
-}
+        
+} //-----------------------------
+
     extension ViewController: UITableViewDelegate, UITableViewDataSource {
         /// tableView에 cell을 만들 개수를 설정하는 프로토콜 메소드
         func tableView(_ tableView: UITableView,
                        numberOfRowsInSection section: Int) -> Int {
-
+            if workOutList.count == 0 {
+                return 0
+            } else {
             for i in 0...workOutList.count {
-                if workOutList[i].date == selecteDate {
-                    return workOutList.count
-                } else {
+                    if workOutList[i].date == selecteDate {
+                        return workOutList.count
+                }
                     return 0
                 }
 
@@ -148,7 +150,7 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
                     let workname = users.workName!
                     let setNum = users.setNum!
                     let countNum = users.countNum!
-                    let date = users.date
+                    let date = users.date!
                     
                     detailView.receiveItems(workname, setNum, countNum, date)
                     detailView.selectedCell(Int(indexPath!.row)) // 몇번째인지 보내주는 함수
@@ -157,3 +159,5 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
         }
         
     }
+
+

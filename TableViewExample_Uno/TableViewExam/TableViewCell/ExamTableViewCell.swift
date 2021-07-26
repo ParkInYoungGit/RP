@@ -8,7 +8,7 @@
 import UIKit
 
 protocol ExamTableCellDelegate {
-    func didSelect(for index: Int, select: Bool)
+    func didSelect(sender: ExamTableViewCell )
 }
 
 
@@ -32,20 +32,8 @@ class ExamTableViewCell: UITableViewCell {
     }
 
     @IBAction func didSelected(_ sender: UISwitch) {
-        guard let idx = index else {
-            return
+        delegate?.didSelect(sender: self)
         }
-        
-        if sender.isOn == true {
-            customSwitch.isOn = true
-            delegate?.didSelect(for: idx, select: true)
-        }else {
-            customSwitch.isOn = false
-            delegate?.didSelect(for: idx, select: false)
-        }
-        sender.isOn = !sender.isOn
-        
-    }
     
     
     

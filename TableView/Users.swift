@@ -13,7 +13,7 @@ struct Users: Codable {
     var countNum: Int?
     var setNum: Int?
     var minutes: Int?
-    var date: String
+    var date: String?
   
 
     

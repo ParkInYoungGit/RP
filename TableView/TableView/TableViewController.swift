@@ -135,7 +135,7 @@ class TableViewController: UITableViewController {
                 let workname = users.workName!
                 let setNum = users.setNum!
                 let countNum = users.countNum!
-                let date = users.date
+                let date = users.date!
                 
                 detailView.receiveItems(workname, setNum, countNum, date)
                 detailView.selectedCell(Int(indexPath!.row)) // 몇번째인지 보내주는 함수
