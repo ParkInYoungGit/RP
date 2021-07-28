@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Wi8-dG-oSU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LKf-qa-4eh">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
@@ -222,7 +222,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K84-Wl-VVY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3142.0289855072465" y="758.70535714285711"/>
+            <point key="canvasLocation" x="4052.1739130434785" y="758.70535714285711"/>
         </scene>
         <!--First View Controller-->
         <scene sceneID="lg5-fi-kDN">
@@ -237,7 +237,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yMK-q7-ABu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4291" y="759"/>
+            <point key="canvasLocation" x="5200" y="758.70535714285711"/>
         </scene>
         <!--Second View Controller-->
         <scene sceneID="ter-ii-zhU">
@@ -252,7 +252,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dba-fN-EsO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4935" y="754"/>
+            <point key="canvasLocation" x="5844.9275362318849" y="753.34821428571422"/>
         </scene>
         <!--운동 입력-->
         <scene sceneID="Kvi-Un-4Nd">
@@ -262,27 +262,48 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="어떤 운동을 했나요?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="v15-YI-aIa">
-                                <rect key="frame" x="40" y="125" width="303" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="어떤 운동을 했나요?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="v15-YI-aIa">
+                                <rect key="frame" x="50" y="121" width="314" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="314" id="VJ8-76-1X5"/>
+                                    <constraint firstAttribute="height" constant="34" id="zuz-EH-EPU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="몇 회" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kDX-ZD-wqN">
-                                <rect key="frame" x="40" y="187" width="120" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="몇 회" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kDX-ZD-wqN">
+                                <rect key="frame" x="50" y="187" width="120" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="psd-so-hHn"/>
+                                    <constraint firstAttribute="height" constant="34" id="wrX-er-7Zr"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="몇 세트 or 몇 분" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A0W-3a-fnG">
-                                <rect key="frame" x="223" y="187" width="120" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="몇 세트 or 몇 분" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A0W-3a-fnG">
+                                <rect key="frame" x="244" y="187" width="120" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="1FR-IK-fzD"/>
+                                    <constraint firstAttribute="width" constant="120" id="AzM-ze-lis"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="SxE-SX-WR6"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="kDX-ZD-wqN" firstAttribute="top" secondItem="v15-YI-aIa" secondAttribute="bottom" constant="32" id="49a-3V-v5U"/>
+                            <constraint firstItem="SxE-SX-WR6" firstAttribute="bottom" secondItem="kDX-ZD-wqN" secondAttribute="bottom" constant="592" id="4az-Ae-hbc"/>
+                            <constraint firstItem="A0W-3a-fnG" firstAttribute="top" secondItem="v15-YI-aIa" secondAttribute="bottom" constant="32" id="CFr-Yc-U3N"/>
+                            <constraint firstItem="SxE-SX-WR6" firstAttribute="trailing" secondItem="A0W-3a-fnG" secondAttribute="trailing" constant="50" id="ZUv-Bv-ld5"/>
+                            <constraint firstItem="SxE-SX-WR6" firstAttribute="trailing" secondItem="v15-YI-aIa" secondAttribute="trailing" constant="50" id="k5e-ny-Tff"/>
+                            <constraint firstItem="kDX-ZD-wqN" firstAttribute="leading" secondItem="SxE-SX-WR6" secondAttribute="leading" constant="50" id="nlp-DQ-Hhf"/>
+                            <constraint firstItem="v15-YI-aIa" firstAttribute="top" secondItem="SxE-SX-WR6" secondAttribute="top" constant="33" id="q5Y-gC-YTd"/>
+                            <constraint firstItem="v15-YI-aIa" firstAttribute="leading" secondItem="SxE-SX-WR6" secondAttribute="leading" constant="50" id="qEi-aO-UCF"/>
+                            <constraint firstItem="A0W-3a-fnG" firstAttribute="leading" secondItem="kDX-ZD-wqN" secondAttribute="trailing" constant="74" id="rut-sn-U9R"/>
+                            <constraint firstItem="SxE-SX-WR6" firstAttribute="bottom" secondItem="A0W-3a-fnG" secondAttribute="bottom" constant="592" id="vDv-Ua-1oJ"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="운동 입력" id="UuC-tM-HWS">
                         <barButtonItem key="rightBarButtonItem" title="OK" id="smH-tM-GQ9">
@@ -299,7 +320,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pPR-GQ-vvd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4067" y="39"/>
+            <point key="canvasLocation" x="4066.666666666667" y="38.839285714285715"/>
         </scene>
         <!--Add View Controller-->
         <scene sceneID="GPe-hD-Wh0">
@@ -349,6 +370,7 @@
                     <connections>
                         <segue destination="QuK-tv-bcA" kind="relationship" relationship="viewControllers" id="umW-XF-rW1"/>
                         <segue destination="nrR-uP-OCR" kind="relationship" relationship="viewControllers" id="5uB-Ft-4s1"/>
+                        <segue destination="YmS-LU-IZG" kind="relationship" relationship="viewControllers" id="Fkx-Ja-Qle"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UY8-nm-VNg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -374,6 +396,100 @@
             </objects>
             <point key="canvasLocation" x="2377" y="31"/>
         </scene>
+        <!--BMI 지수 측정하기-->
+        <scene sceneID="KM4-jm-BbQ">
+            <objects>
+                <viewController id="LKf-qa-4eh" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dHN-yM-tzn">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="GYG-Qs-EtM">
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                </segments>
+                            </segmentedControl>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="4fT-he-QBm">
+                                <rect key="frame" x="72" y="104" width="271" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="남자"/>
+                                    <segment title="여자"/>
+                                </segments>
+                            </segmentedControl>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="키를 입력하세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eQk-JD-szG">
+                                <rect key="frame" x="72" y="167" width="271" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="몸무게를 입력하세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cM0-yh-YGy">
+                                <rect key="frame" x="72" y="271" width="271" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            </textField>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="f0p-hC-DaR">
+                                <rect key="frame" x="18" y="209" width="378" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </slider>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Hp6-Qv-x4d"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="BMI 지수 측정하기" id="0sY-c7-Stx">
+                        <barButtonItem key="rightBarButtonItem" title="OK" id="GQG-5Z-6De">
+                            <connections>
+                                <segue destination="1Ct-ey-WQn" kind="show" id="rOu-xe-ENl"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="V3c-sr-I4G" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1478.2608695652175" y="758.70535714285711"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="jLT-kr-jW6">
+            <objects>
+                <viewController id="1Ct-ey-WQn" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZRP-1S-huL">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YGU-K6-Nci">
+                                <rect key="frame" x="71" y="142" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="입니다 !" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2o4-iB-A36">
+                                <rect key="frame" x="208" y="142" width="54" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iDE-IJ-8qi">
+                                <rect key="frame" x="71" y="211" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="r5b-Wv-aB2"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="nNc-bw-9do"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yav-KY-dGI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2179.7101449275365" y="752.67857142857144"/>
+        </scene>
         <!--list-->
         <scene sceneID="Tqt-2Q-Cnn">
             <objects>
@@ -391,7 +507,26 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kb5-f5-l0l" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2231.8840579710145" y="758.70535714285711"/>
+            <point key="canvasLocation" x="3140.579710144928" y="758.70535714285711"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="MC2-KJ-Ty0">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YmS-LU-IZG" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" image="person" catalog="system" selectedImage="person.fill" id="wCL-KB-x6Q"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="U6q-SU-daT">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="LKf-qa-4eh" kind="relationship" relationship="rootViewController" id="YGn-lj-XuG"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9Eg-Ut-yJq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="662" y="759"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
@@ -402,6 +537,8 @@
         <image name="calendar.circle.fill" catalog="system" width="128" height="121"/>
         <image name="list.bullet" catalog="system" width="128" height="88"/>
         <image name="list.bullet.rectangle" catalog="system" width="128" height="93"/>
+        <image name="person" catalog="system" width="128" height="117"/>
+        <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

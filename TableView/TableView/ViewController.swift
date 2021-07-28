@@ -17,7 +17,12 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
     var selecteDate = ""
     var currentDate = ""
     let dateFormatter = DateFormatter()
-    var eventDate : [Date] = []
+    var eventDate : [Date] = [] // calendar에 표시해주는 Arr
+    var selectData: [String] = [] // 선택한 날짜 별로 모아준 Arr
+    var dateArr : [String] = [] // 데이터 입력 날짜만 모아둔 Arr
+    var allDictionaries : [String : String] = [:] // 객체를 Dic으로 변환한
+    var workNameDic : [String : String] = [:] // 운동 이름과 날짜 받아올 Dic
+    var workNameArr : [String] = [] //운동이름만 넣을 Arr
     
     
     override func viewDidLoad() {
@@ -27,6 +32,8 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
             let users = try? PropertyListDecoder().decode([Users].self, from: data)
             workOutList = users!
         }
+        
+        
             
         print("viewdidload")
         
@@ -45,13 +52,47 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
 
             
         calendarEvent()
-            // Delegate = self -> 제스쳐, UI
-            tableListView.delegate = self
-            
-            // DataSource = self -> 데이터관리
-            tableListView.dataSource = self
+        // Delegate = self -> 제스쳐, UI
+        tableListView.delegate = self
+        
+        // DataSource = self -> 데이터관리
+        tableListView.dataSource = self
+    
+        value()
+        
+
+     
+        
+        
+        
     }
     
+    func value (){
+        // date값만 배열로 변환
+       //array of all dictionaries.
+           for data in workOutList {
+              let  dictionary = [
+                "date" : data.date!
+              ]
+              allDictionaries = dictionary
+            for data2 in allDictionaries.values{
+                dateArr.append(data2)
+                print("djfuqemm\(dateArr)")
+            }
+           }
+    
+        for data in workOutList {
+           let  dictionary = [
+            data.date! : data.workName!
+           ]
+           workNameDic = dictionary
+            print("worknameDic\(workNameDic)")
+        }
+        
+        
+    }
+
+
 
     func calendarEvent (){
         if workOutList.count == 0 {
@@ -66,9 +107,49 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
     
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        selectData.removeAll()
+        workNameArr.removeAll()
         selecteDate = dateFormatter.string(from: date)
         tableListView.reloadData()
         print(dateFormatter.string(from: date) + " 선택됨")
+        print(selecteDate + " 선택됨")
+        
+        
+        
+        for string in dateArr {
+            if string.starts(with: selecteDate){
+                selectData.append(string)
+                print("selectDataArr\(selectData)")
+            }
+        }
+        
+        for i in 0...dateArr.count - 1 {
+            if workOutList[i].date == selecteDate{
+                workNameArr.append(workOutList[i].workName!)
+                print("worknameArr  \(workNameArr)")
+            }
+        }
+//
+//        let result = workNameDic.filter { (key, value) in
+//            key.lowercased().contains(selecteDate)
+//        }
+//        print("result\(result)")
+        
+//        for _ in 0...selectData.count {
+//            if let result = workNameDic[selecteDate]{
+//                workNameArr.append(result)
+//                print("result\(result)")
+//            }
+//        }
+//
+//        let condition: ((String, String)) -> Bool = {
+//            $0.0.contains(self.selecteDate)
+//        }
+
+        
+        
+        
+        tableListView.reloadData()
     }
     
     // 캘린더 setting
@@ -86,7 +167,7 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
 
                 if self.eventDate.contains(date){
-                    return workOutList.count
+                    return 1
                 } ;return 0
     }
         
@@ -97,21 +178,12 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
         /// tableView에 cell을 만들 개수를 설정하는 프로토콜 메소드
         func tableView(_ tableView: UITableView,
                        numberOfRowsInSection section: Int) -> Int {
-            if workOutList.count == 0 {
-                return 0
-            } else {
-            for i in 0...workOutList.count {
-                    if workOutList[i].date == selecteDate {
-                        return workOutList.count
-                }
-                    return 0
-                }
-
-            }
             
-            return workOutList.count
+            if !selectData.isEmpty {
+                return selectData.count
+            }
+            return 1
         }
-
         
         
         /// tableView에 cell 어떤 cell로 구성할지 설정하는 프로토콜 메소드
@@ -124,12 +196,19 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
 
             // UITableview 내부에 있는 경우
            let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
+
             
-            let users: Users
-            users = workOutList[indexPath.row]
-            // cell에 데이터를 전달한다.
+            if !selectData.isEmpty {
+                
+                //cell.textLabel?.text = selectData[indexPath.row]
+                cell.textLabel?.text = workNameArr[indexPath.row]
+                
+            }
+            else {
+                cell.textLabel?.text = "해당 날짜에는 운동 기록이 없습니다."
+            }
+            
             // cell.textLabel?.text = "\(users.workName!) \(users.setNum!)세트 \(users.countNum!)회"
-            cell.textLabel?.text = "\(users.workName!) \(users.setNum!)세트 \(users.countNum!)회"
 
             
             return cell
