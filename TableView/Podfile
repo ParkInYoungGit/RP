@@ -7,5 +7,6 @@ target 'TableView' do
 
   # Pods for TableView
 pod 'FSCalendar'
+pod 'Charts'
 
 end

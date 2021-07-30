@@ -8,6 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		007B6A9926AE66AA00B8FFF9 /* Add2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007B6A9826AE66A900B8FFF9 /* Add2ViewController.swift */; };
+		6F157F9426B26F28002BF934 /* chartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F157F9326B26F28002BF934 /* chartViewController.swift */; };
+		6F157F9626B27381002BF934 /* chartWeightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F157F9526B27381002BF934 /* chartWeightViewController.swift */; };
+		6F7CC34026B122AF00E8A532 /* BMIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7CC33F26B122AF00E8A532 /* BMIViewController.swift */; };
+		6F7CC34226B141E300E8A532 /* resultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7CC34126B141E300E8A532 /* resultViewController.swift */; };
+		6F7CC35526B1A07000E8A532 /* bmi5.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F7CC35026B1A06F00E8A532 /* bmi5.png */; };
+		6F7CC35626B1A07000E8A532 /* bmi2.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F7CC35126B1A06F00E8A532 /* bmi2.png */; };
+		6F7CC35726B1A07000E8A532 /* bmi1.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F7CC35226B1A06F00E8A532 /* bmi1.png */; };
+		6F7CC35826B1A07000E8A532 /* bmi3.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F7CC35326B1A06F00E8A532 /* bmi3.png */; };
+		6F7CC35926B1A07000E8A532 /* bmi4.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F7CC35426B1A06F00E8A532 /* bmi4.png */; };
 		6F86783526AAEF2800A00685 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F86783326AAEF2800A00685 /* FirstViewController.swift */; };
 		6F86783626AAEF2800A00685 /* FirstViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F86783426AAEF2800A00685 /* FirstViewController.xib */; };
 		6F86783926AAEF7A00A00685 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F86783726AAEF7A00A00685 /* SecondViewController.swift */; };
@@ -29,6 +38,15 @@
 		007B6A9826AE66A900B8FFF9 /* Add2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Add2ViewController.swift; sourceTree = "<group>"; };
 		15BB0096BCFECF05E80BBDC2 /* Pods_TableView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TableView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DCA0CEB780E0DA06A4AB0F1 /* Pods-TableView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TableView.release.xcconfig"; path = "Target Support Files/Pods-TableView/Pods-TableView.release.xcconfig"; sourceTree = "<group>"; };
+		6F157F9326B26F28002BF934 /* chartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chartViewController.swift; sourceTree = "<group>"; };
+		6F157F9526B27381002BF934 /* chartWeightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chartWeightViewController.swift; sourceTree = "<group>"; };
+		6F7CC33F26B122AF00E8A532 /* BMIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BMIViewController.swift; sourceTree = "<group>"; };
+		6F7CC34126B141E300E8A532 /* resultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = resultViewController.swift; sourceTree = "<group>"; };
+		6F7CC35026B1A06F00E8A532 /* bmi5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bmi5.png; sourceTree = "<group>"; };
+		6F7CC35126B1A06F00E8A532 /* bmi2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bmi2.png; sourceTree = "<group>"; };
+		6F7CC35226B1A06F00E8A532 /* bmi1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bmi1.png; sourceTree = "<group>"; };
+		6F7CC35326B1A06F00E8A532 /* bmi3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bmi3.png; sourceTree = "<group>"; };
+		6F7CC35426B1A06F00E8A532 /* bmi4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bmi4.png; sourceTree = "<group>"; };
 		6F86783326AAEF2800A00685 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		6F86783426AAEF2800A00685 /* FirstViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FirstViewController.xib; sourceTree = "<group>"; };
 		6F86783726AAEF7A00A00685 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
@@ -68,6 +86,19 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		6F7CC34326B19F4C00E8A532 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				6F7CC35226B1A06F00E8A532 /* bmi1.png */,
+				6F7CC35126B1A06F00E8A532 /* bmi2.png */,
+				6F7CC35326B1A06F00E8A532 /* bmi3.png */,
+				6F7CC35426B1A06F00E8A532 /* bmi4.png */,
+				6F7CC35026B1A06F00E8A532 /* bmi5.png */,
+			);
+			name = images;
+			path = ../images;
+			sourceTree = "<group>";
+		};
 		6F8F83CA26A99A4400C7F51F = {
 			isa = PBXGroup;
 			children = (
@@ -90,6 +121,7 @@
 		6F8F83D526A99A4400C7F51F /* TableView */ = {
 			isa = PBXGroup;
 			children = (
+				6F7CC34326B19F4C00E8A532 /* images */,
 				6F8F83D626A99A4400C7F51F /* AppDelegate.swift */,
 				6F8F83D826A99A4400C7F51F /* SceneDelegate.swift */,
 				6F8F83DA26A99A4400C7F51F /* ViewController.swift */,
@@ -105,6 +137,10 @@
 				6F86783D26AB190C00A00685 /* TableViewController.swift */,
 				6F86783F26AB22B500A00685 /* DetailViewController.swift */,
 				007B6A9826AE66A900B8FFF9 /* Add2ViewController.swift */,
+				6F7CC33F26B122AF00E8A532 /* BMIViewController.swift */,
+				6F7CC34126B141E300E8A532 /* resultViewController.swift */,
+				6F157F9326B26F28002BF934 /* chartViewController.swift */,
+				6F157F9526B27381002BF934 /* chartWeightViewController.swift */,
 			);
 			path = TableView;
 			sourceTree = "<group>";
@@ -178,8 +214,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				6F8F83E326A99A4500C7F51F /* LaunchScreen.storyboard in Resources */,
+				6F7CC35926B1A07000E8A532 /* bmi4.png in Resources */,
 				6F8F83E026A99A4500C7F51F /* Assets.xcassets in Resources */,
+				6F7CC35826B1A07000E8A532 /* bmi3.png in Resources */,
+				6F7CC35526B1A07000E8A532 /* bmi5.png in Resources */,
 				6F8F83DE26A99A4400C7F51F /* Main.storyboard in Resources */,
+				6F7CC35726B1A07000E8A532 /* bmi1.png in Resources */,
+				6F7CC35626B1A07000E8A532 /* bmi2.png in Resources */,
 				6F86783626AAEF2800A00685 /* FirstViewController.xib in Resources */,
 				6F86783A26AAEF7A00A00685 /* SecondViewController.xib in Resources */,
 			);
@@ -237,13 +278,17 @@
 				6F86784026AB22B500A00685 /* DetailViewController.swift in Sources */,
 				6F86783926AAEF7A00A00685 /* SecondViewController.swift in Sources */,
 				6F86783526AAEF2800A00685 /* FirstViewController.swift in Sources */,
+				6F7CC34226B141E300E8A532 /* resultViewController.swift in Sources */,
 				6F8F83DB26A99A4400C7F51F /* ViewController.swift in Sources */,
+				6F157F9626B27381002BF934 /* chartWeightViewController.swift in Sources */,
 				6F86783E26AB190C00A00685 /* TableViewController.swift in Sources */,
 				6F8F83D726A99A4400C7F51F /* AppDelegate.swift in Sources */,
+				6F7CC34026B122AF00E8A532 /* BMIViewController.swift in Sources */,
 				6F8F840B26AA912300C7F51F /* AddViewController.swift in Sources */,
 				6F8F83D926A99A4400C7F51F /* SceneDelegate.swift in Sources */,
 				6F86783C26AB17F200A00685 /* Users.swift in Sources */,
 				007B6A9926AE66AA00B8FFF9 /* Add2ViewController.swift in Sources */,
+				6F157F9426B26F28002BF934 /* chartViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

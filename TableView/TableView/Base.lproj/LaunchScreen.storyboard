@@ -19,7 +19,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WORK OUT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rT2-Ug-nLi">
                                 <rect key="frame" x="103.5" y="342" width="207" height="46"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="46" id="eN4-nE-hYX"/>
+                                    <constraint firstAttribute="height" constant="46" id="VyI-Cn-QeV"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="38"/>
                                 <nil key="textColor"/>
@@ -27,9 +27,6 @@
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="💪" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0tB-C4-qoa">
                                 <rect key="frame" x="170" y="396" width="74" height="83"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="74" id="hID-YP-q66"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="69"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -38,13 +35,10 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="rT2-Ug-nLi" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="298" id="FLC-KF-FnN"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="0tB-C4-qoa" secondAttribute="trailing" constant="170" id="MJU-aS-vVW"/>
-                            <constraint firstItem="0tB-C4-qoa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="170" id="Q76-pX-CUw"/>
-                            <constraint firstItem="rT2-Ug-nLi" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Q9d-By-vCF"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="rT2-Ug-nLi" secondAttribute="bottom" constant="474" id="XqT-fU-bDb"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="0tB-C4-qoa" secondAttribute="bottom" constant="383" id="bgR-Gd-RgQ"/>
-                            <constraint firstItem="0tB-C4-qoa" firstAttribute="centerX" secondItem="rT2-Ug-nLi" secondAttribute="centerX" id="zFL-6u-AKe"/>
+                            <constraint firstItem="rT2-Ug-nLi" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="ToI-O8-p6m"/>
+                            <constraint firstItem="rT2-Ug-nLi" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="298" id="UAF-eI-6ug"/>
+                            <constraint firstItem="0tB-C4-qoa" firstAttribute="top" secondItem="rT2-Ug-nLi" secondAttribute="bottom" constant="8" symbolic="YES" id="n3j-ko-V0d"/>
+                            <constraint firstItem="0tB-C4-qoa" firstAttribute="centerX" secondItem="rT2-Ug-nLi" secondAttribute="centerX" id="on1-0m-j9C"/>
                         </constraints>
                     </view>
                 </viewController>

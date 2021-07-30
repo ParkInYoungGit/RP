@@ -9,8 +9,8 @@
  /* 테이블 뷰 작성 방법 */
  1. "Data" 를 가져온다. (Array를 이용한다.)
  2. "UITableView" 를 생성한다.
- 3. "UITableViewCell" 을 생성한다. 
- 4. "UITableViewCell"을 tableView에 등록한다. 
+ 3. "UITableViewCell" 을 생성한다.
+ 4. "UITableViewCell"을 tableView에 등록한다.
     (UITableViewCell 내부에 바로 작성하는 방법 vs UITableViewCell.swift를 따로 만드는 방법)
  5. "UITableViewDelegate", "UITableViewDataSource" 를 채택한다.
  6. 프로토콜에서 반드시 구현해야하는 메소드를 구현한다.
@@ -39,21 +39,20 @@ class ViewController: UIViewController {
     "배경화면", "Siri 및 rjator","에어플레인 모드", "Wi-Fi", "Bluetooth", "셀룰러", "개인용 핫스팟",
     "알림", "사운드 및 햅틱" , "방해금지 모드", "스크린 타임", "일반", "제어 센터", "디스플레이 및 밝기", "홈화면", "손쉬운 사용",
     "배경화면", "Siri 및 rjator"]
-    var boolArr = [Bool]()
+    var boolArr = [true, true,true, true,true, true,true, true,true, true,true, true,true, true,true, true,true, true,true, true,true, true,true, true,true, true,true, true,true, true,true, true,true, true,true, true,true, true,true, true,true, true,true, true,true, true,true, true,true, true,true, true,true, true,true, true,true, true,true, true,true, true,true, true,true, true,true, true,true, true,true, true,true, true,true, true,true, true,true, true]
     
 
     private let testLabel = UILabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        let checkMark = UserDefaults.standard
+//        let checkArray = checkMark.array(forKey: "items")as? [Bool] ?? [Bool]()
+//        boolArr = checkArray
+        
 
-        for i in 0...dataArr.count - 1{
-            boolArr.append(true)
-        }
 
-        let checkMark = UserDefaults.standard
-        let checkArray = checkMark.array(forKey: "items")as? [Bool] ?? [Bool]()
-        boolArr = checkArray
+
         
         selected = Array<Int>(repeating: 0, count: dataArr.count)
         // 3) tableView Delegate와 DataSource를 채택한다.
@@ -67,25 +66,11 @@ class ViewController: UIViewController {
         // DataSource = self -> 데이터관리
         tableView.dataSource = self
         
-        // 4) tableViewcell을 등록한다. (따로 UITableviewCell 파일을 만든 경우 등록해야한다.) 
+        // 4) tableViewcell을 등록한다. (따로 UITableviewCell 파일을 만든 경우 등록해야한다.)
         tableView.register(UINib(nibName: "ExamTableViewCell", bundle: nil), forCellReuseIdentifier: "ExamCell")
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        tableView.reloadData()
-        let checkMark = UserDefaults.standard
-        let checkArray = checkMark.array(forKey: "items")as? [Bool] ?? [Bool]()
-        boolArr = checkArray
-    }
-    
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        let userDefaults = UserDefaults.standard
-        userDefaults.set(boolArr, forKey: "items") // 키, value 설정
-        userDefaults.synchronize()
-        
-        print("\(boolArr)")
-    }
+
 }
 
 
@@ -120,7 +105,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource,  ExamTable
         // cell에 데이터를 전달한다.
         cell.titleLabel.text = dataArr[indexPath.row]
         cell.customSwitch.isOn = boolArr[indexPath.row]
-
+        
+        //cell.switch.isOn = tableViewData[indexPath.row].isClicked
         
         return cell
     }
@@ -136,6 +122,4 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource,  ExamTable
     
     
     
-}//----------------------------------
-
-
+}//—————————————————

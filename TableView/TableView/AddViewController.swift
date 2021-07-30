@@ -76,6 +76,19 @@ class AddViewController: UIViewController {
    
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    // nil check function
+        func checkNil(str: String!) -> Int {
+            let check = str.trimmingCharacters(in: .whitespacesAndNewlines)
+            if check.isEmpty{
+                return 0
+            }else{
+                return 1
+            }
+        }
     
     
 }

@@ -15,10 +15,8 @@ class TableViewController: UITableViewController {
     @IBOutlet var tvlistView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
   
-        
-        
+    
         self.navigationItem.leftBarButtonItem = self.editButtonItem
         tvlistView.delegate = self
         
@@ -74,6 +72,10 @@ class TableViewController: UITableViewController {
             //tvlistView.deleteRows(at: [indexPath], with: .fade)
             // Delete the row from the data source
             tableView.deleteRows(at: [indexPath], with: .fade)
+            let userDefaults = UserDefaults.standard
+            UserDefaults.standard.set(try? PropertyListEncoder().encode(workOutList), forKey:"workOutList")
+            userDefaults.synchronize()
+            print("tableView delete 저장")
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    

@@ -32,7 +32,7 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
             let users = try? PropertyListDecoder().decode([Users].self, from: data)
             workOutList = users!
         }
-        
+        value()
         
             
         print("viewdidload")
@@ -48,8 +48,6 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
         currentDate = date.string(from: Date())
 
 
-        
-
             
         calendarEvent()
         // Delegate = self -> 제스쳐, UI
@@ -58,12 +56,24 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
         // DataSource = self -> 데이터관리
         tableListView.dataSource = self
     
-        value()
-        
-
-     
-        
-        
+        tableListView.reloadData()
+        selecteDate = currentDate
+        for string in dateArr {
+            if string.starts(with: selecteDate){
+                selectData.append(string)
+                print("selectDataArr\(selectData)")
+            }
+        }
+        if workOutList.count == 0 {
+        } else {
+            for i in 0...dateArr.count - 1 {
+                if workOutList[i].date == selecteDate{
+                    workNameArr.append(workOutList[i].workName!)
+                    print("worknameArr  \(workNameArr)")
+                }
+            }
+        }
+        tableListView.reloadData()
         
     }
     
@@ -80,23 +90,12 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
                 print("djfuqemm\(dateArr)")
             }
            }
-    
-        for data in workOutList {
-           let  dictionary = [
-            data.date! : data.workName!
-           ]
-           workNameDic = dictionary
-            print("worknameDic\(workNameDic)")
-        }
-        
-        
     }
 
 
 
     func calendarEvent (){
         if workOutList.count == 0 {
-            
         } else {
             for i in 0...workOutList.count - 1 {
                 eventDate.append(dateFormatter.date(from:workOutList[i].date!)!)
@@ -122,34 +121,17 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
                 print("selectDataArr\(selectData)")
             }
         }
-        
-        for i in 0...dateArr.count - 1 {
-            if workOutList[i].date == selecteDate{
-                workNameArr.append(workOutList[i].workName!)
-                print("worknameArr  \(workNameArr)")
+        if workOutList.count == 0 {
+        } else {
+            for i in 0...dateArr.count - 1 {
+                if workOutList[i].date == selecteDate{
+                    workNameArr.append(workOutList[i].workName!)
+                    print("worknameArr  \(workNameArr)")
+                }
             }
         }
-//
-//        let result = workNameDic.filter { (key, value) in
-//            key.lowercased().contains(selecteDate)
-//        }
-//        print("result\(result)")
-        
-//        for _ in 0...selectData.count {
-//            if let result = workNameDic[selecteDate]{
-//                workNameArr.append(result)
-//                print("result\(result)")
-//            }
-//        }
-//
-//        let condition: ((String, String)) -> Bool = {
-//            $0.0.contains(self.selecteDate)
-//        }
-
-        
-        
-        
         tableListView.reloadData()
+
     }
     
     // 캘린더 setting
@@ -159,16 +141,16 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
         calendar.scrollEnabled = true
         calendar.scrollDirection = .vertical
         calendar.appearance.headerDateFormat = "YYYY년 M월"
-        calendar.appearance.headerTitleColor = UIColor(red: 38/255, green: 153/255, blue: 251/255, alpha: 1
-        )
+        //calendar.appearance.headerTitleColor = UIColor(red: 38/255, green: 153/255, blue: 251/255, alpha: 1
+        //)
         calendar.locale = Locale(identifier: "ko_KR")
     }
 
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
-
-                if self.eventDate.contains(date){
-                    return 1
-                } ;return 0
+        if self.eventDate.contains(date){
+            return 1
+        }
+        return 0
     }
         
         
@@ -190,6 +172,7 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
         func tableView(_ tableView: UITableView,
                        cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
+        
             
             // 외부에 UITableViewCell이 있는 경우
             // let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath) as! ExamTableViewCell
@@ -199,57 +182,69 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
 
             
             if !selectData.isEmpty {
-                
                 //cell.textLabel?.text = selectData[indexPath.row]
                 cell.textLabel?.text = workNameArr[indexPath.row]
-                
             }
             else {
                 cell.textLabel?.text = "해당 날짜에는 운동 기록이 없습니다."
             }
-            
             // cell.textLabel?.text = "\(users.workName!) \(users.setNum!)세트 \(users.countNum!)회"
-
-            
             return cell
         }
         
+        
         override func viewWillAppear(_ animated: Bool) {
-            tableListView.reloadData()
             // data 불러오기
             if let data = UserDefaults.standard.value(forKey:"workOutList") as? Data {
                 let users = try? PropertyListDecoder().decode([Users].self, from: data)
                 workOutList = users!
+                print("불러오나?\(workOutList)")
             }
+            allDictionaries.removeAll()
+            dateArr.removeAll()
+            selectData.removeAll()
+            workNameArr.removeAll()
+            
+            value()
+            appenArr()
+            
+
+           tableListView.reloadData()
+            
+        
+           
         }
         
         override func viewWillDisappear(_ animated: Bool) {
-            print("viewcontroller viewWillDissAppear")
             tableListView.reloadData()
             let userDefaults = UserDefaults.standard
             UserDefaults.standard.set(try? PropertyListEncoder().encode(workOutList), forKey:"workOutList")
             userDefaults.synchronize()  // 동기화
+
+
+
+            
+            tableListView.reloadData()
         }
         
-        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-                // Get the new view controller using segue.destination.
-                // Pass the selected object to the new view controller.
-                if segue.identifier == "sgDetail"{
-                    let cell = sender as! UITableViewCell
-                    let indexPath = self.tableListView.indexPath(for: cell) // 몇번째 인지 번호를 가져옴
-                    let detailView = segue.destination as! DetailViewController // Detailview 잡고 (java의 new)
-                    
-                    let users: Users = workOutList[indexPath!.row]
-                    
-                    let workname = users.workName!
-                    let setNum = users.setNum!
-                    let countNum = users.countNum!
-                    let date = users.date!
-                    
-                    detailView.receiveItems(workname, setNum, countNum, date)
-                    detailView.selectedCell(Int(indexPath!.row)) // 몇번째인지 보내주는 함수
+        
+        func appenArr(){
+            for string in dateArr {
+                if string.starts(with: selecteDate){
+                    selectData.append(string)
+                    print("selectDataArr\(selectData)")
                 }
-            
+            }
+            if workOutList.count == 0 {
+            } else {
+                for i in 0...dateArr.count - 1 {
+                    if workOutList[i].date == selecteDate{
+                        workNameArr.append(workOutList[i].workName!)
+                        print("worknameArr  \(workNameArr)")
+                    }
+                }
+            }
+            tableListView.reloadData()
         }
         
     } //-----------------
