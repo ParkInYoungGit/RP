@@ -31,6 +31,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var guestImage1: UIImageView!
     @IBOutlet weak var guestImage2: UIImageView!
     @IBOutlet weak var guestImage3: UIImageView!
+    @IBOutlet weak var bbangCoungLabel: UILabel!
     
     
     
@@ -73,6 +74,9 @@ class ViewController: UIViewController {
     var count = 0
     var bbangCount = 0
     
+    @IBOutlet weak var prepareviewRadius: UIView!
+    @IBOutlet weak var finishViewRadius: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -83,7 +87,8 @@ class ViewController: UIViewController {
         finishView.isHidden = true
         firstImageChange()
         bbangPoint()
-    
+        prepareviewRadius.layer.cornerRadius = 10
+        finishViewRadius.layer.cornerRadius = 10
         
     }
     //MARK: - imageChange
@@ -113,17 +118,14 @@ class ViewController: UIViewController {
     
     func bbangPoint(){
         gtapped1 = UITapGestureRecognizer(target: self, action: #selector(bbangGuest(_:)))
-        gtapped1.numberOfTapsRequired = 1
         self.guestImage1.addGestureRecognizer(gtapped1)
         self.guestImage1.isUserInteractionEnabled = true
         
         gtapped2 = UITapGestureRecognizer(target: self, action: #selector(bbangGuest(_:)))
-        gtapped2.numberOfTapsRequired = 1
         self.guestImage2.addGestureRecognizer(gtapped2)
         self.guestImage2.isUserInteractionEnabled = true
         
         gtapped3 = UITapGestureRecognizer(target: self, action: #selector(bbangGuest(_:)))
-        gtapped3.numberOfTapsRequired = 1
         self.guestImage3.addGestureRecognizer(gtapped3)
         self.guestImage3.isUserInteractionEnabled = true
     }
@@ -135,15 +137,17 @@ class ViewController: UIViewController {
                 count = count + 1
                 bbangCount = bbangCount - 1
                 countLabel.text = String(count)
+                bbangCoungLabel.text = String(bbangCount)
                 guestImage1.image = nil
                 guestTimer1.invalidate()
                 guestTime1 = 0
                 DispatchQueue.global(qos: .userInitiated).async {
                     usleep(2000000)
+                    DispatchQueue.main.async {
                     self.gTimer1()
-                    RunLoop.current.run()
+                    }
                 }
-            } else {
+            } else if bbangCount == 0 {
                 gtapped1.isEnabled = false
             }
         }
@@ -153,15 +157,17 @@ class ViewController: UIViewController {
                 count = count + 1
                 bbangCount = bbangCount - 1
                 countLabel.text = String(count)
+                bbangCoungLabel.text = String(bbangCount)
                 guestImage2.image = nil
                 guestTimer2.invalidate()
                 guestTime2 = 0
                 DispatchQueue.global(qos: .userInitiated).async {
                     usleep(2000000)
+                    DispatchQueue.main.async {
                     self.gTimer2()
-                    RunLoop.current.run()
+                    }
                 }
-            } else {
+            } else if bbangCount == 0 {
                 gtapped2.isEnabled = false
             }
         }
@@ -171,15 +177,17 @@ class ViewController: UIViewController {
                 count = count + 1
                 bbangCount = bbangCount - 1
                 countLabel.text = String(count)
+                bbangCoungLabel.text = String(bbangCount)
                 guestImage3.image = nil
                 guestTimer3.invalidate()
                 guestTime3 = 0
                 DispatchQueue.global(qos: .userInitiated).async {
                     usleep(2000000)
+                    DispatchQueue.main.async {
                     self.gTimer3()
-                    RunLoop.current.run()
+                    }
                 }
-            } else {
+            } else if bbangCount == 0 {
                 gtapped3.isEnabled = false
             }
         }
@@ -191,10 +199,10 @@ class ViewController: UIViewController {
             bbangTimer1.invalidate()
             bbangImage.image = UIImage(named: "bbang0.png")
             bbangCount = bbangCount + 1
+            bbangCoungLabel.text = String(bbangCount)
             countLabel.text = String(count)
             bbangTime1 = 0
             tapped1 = UITapGestureRecognizer(target: self, action: #selector(imageChanges(_:)))
-            tapped1.numberOfTapsRequired = 1
             self.bbangImage.addGestureRecognizer(tapped1)
             self.bbangImage.isUserInteractionEnabled = true
         }
@@ -202,10 +210,10 @@ class ViewController: UIViewController {
             bbangTimer2.invalidate()
             bbangImage2.image = UIImage(named: "bbang0.png")
             bbangCount = bbangCount + 1
+            bbangCoungLabel.text = String(bbangCount)
             countLabel.text = String(count)
             bbangTime2 = 0
             tapped2 = UITapGestureRecognizer(target: self, action: #selector(imageChanges(_:)))
-            tapped2.numberOfTapsRequired = 1
             self.bbangImage2.addGestureRecognizer(tapped2)
             self.bbangImage2.isUserInteractionEnabled = true
         }
@@ -213,10 +221,10 @@ class ViewController: UIViewController {
             bbangTimer3.invalidate()
             bbangImage3.image = UIImage(named: "bbang0.png")
             bbangCount = bbangCount + 1
+            bbangCoungLabel.text = String(bbangCount)
             countLabel.text = String(count)
             bbangTime3 = 0
             tapped3 = UITapGestureRecognizer(target: self, action: #selector(imageChanges(_:)))
-            tapped3.numberOfTapsRequired = 1
             self.bbangImage3.addGestureRecognizer(tapped3)
             self.bbangImage3.isUserInteractionEnabled = true
         }
@@ -224,10 +232,10 @@ class ViewController: UIViewController {
             bbangTimer4.invalidate()
             bbangImage4.image = UIImage(named: "bbang0.png")
             bbangCount = bbangCount + 1
+            bbangCoungLabel.text = String(bbangCount)
             countLabel.text = String(count)
             bbangTime4 = 0
             tapped4 = UITapGestureRecognizer(target: self, action: #selector(imageChanges(_:)))
-            tapped4.numberOfTapsRequired = 1
             self.bbangImage4.addGestureRecognizer(tapped4)
             self.bbangImage4.isUserInteractionEnabled = true
         }
@@ -288,7 +296,6 @@ class ViewController: UIViewController {
     @objc func imageChanges(_ sender: UITapGestureRecognizer) {
         if sender == tapped1 {
             bbangTime1 = 0
-            bbangTimeLabel.text = "\(bbangTime1)"
             bbangImage.image = UIImage(named: "bbang1.png")
             tapped1 = UITapGestureRecognizer(target: self, action: #selector(imageChanges2(_:)))
             tapped1.numberOfTapsRequired = 1
@@ -366,36 +373,40 @@ class ViewController: UIViewController {
         if sender == tapped1 {
         bbangImage.image = UIImage(named: "bbang3.png")
         DispatchQueue.global(qos: .userInitiated).async {
+            DispatchQueue.main.async {
                 self.bTimer1()
                 print("tapped")
-            RunLoop.current.run()
+            }
             }
         }
         
         if sender == tapped2 {
         bbangImage2.image = UIImage(named: "bbang3.png")
         DispatchQueue.global(qos: .userInitiated).async {
+            DispatchQueue.main.async {
                 self.bTimer2()
                 print("tapped")
-            RunLoop.current.run()
+            }
             }
         }
         
         if sender == tapped3 {
         bbangImage3.image = UIImage(named: "bbang3.png")
         DispatchQueue.global(qos: .userInitiated).async {
+            DispatchQueue.main.async {
                 self.bTimer3()
                 print("tapped")
-            RunLoop.current.run()
+            }
             }
         }
         
         if sender == tapped4 {
         bbangImage4.image = UIImage(named: "bbang3.png")
         DispatchQueue.global(qos: .userInitiated).async {
+            DispatchQueue.main.async {
                 self.bTimer4()
                 print("tapped")
-            RunLoop.current.run()
+            }
             }
         }
         
@@ -420,6 +431,8 @@ class ViewController: UIViewController {
     
     // 게임 시작
     func startGame() {
+        resetTimer()
+        bbangCount = 0
         count = 0
         totalTime = 0
         guestTime1 = 0
@@ -428,6 +441,13 @@ class ViewController: UIViewController {
         bbangTime1 = 0
         bbangTime2 = 0
         bbangTime3 = 0
+        guestImage1.image = nil
+        guestImage2.image = nil
+        guestImage3.image = nil
+        bbangImage.image = nil
+        bbangImage2.image = nil
+        bbangImage3.image = nil
+        bbangImage4.image = nil
         DispatchQueue.global(qos: .userInitiated).async {
             DispatchQueue.main.async {
                 self.mainTimer()
@@ -435,20 +455,23 @@ class ViewController: UIViewController {
         }
         DispatchQueue.global(qos: .userInitiated).async {
             usleep(2000000)
+            DispatchQueue.main.async {
             self.gTimer1()
-            RunLoop.current.run()
+            }
         }
         
         DispatchQueue.global(qos: .userInitiated).async {
             usleep(5000000)
+            DispatchQueue.main.async {
             self.gTimer2()
-            RunLoop.current.run()
+            }
         }
         
         DispatchQueue.global(qos: .userInitiated).async {
             usleep(8000000)
+            DispatchQueue.main.async {
             self.gTimer3()
-            RunLoop.current.run()
+            }
         }
     }
     
@@ -546,7 +569,7 @@ class ViewController: UIViewController {
             seconds = "\(totalTime/60)"
         }
         totalTimeLabel.text = "\(minutes!) : \(seconds!)"
-        if minutes == "03" {
+        if minutes == "01" {
             finishGame()
         }
 }
@@ -554,8 +577,6 @@ class ViewController: UIViewController {
     
     //MARK: -TimerCallback
     @objc func guestTimerCallback() {
-        guestImage1.image = UIImage(named: "guest.png")
-        
         guestTime1 += 1
         
         var minutes: String?
@@ -572,8 +593,15 @@ class ViewController: UIViewController {
         } else {
             seconds = "\(guestTime1/60)"
         }
-        firstGuestTimeLabel.text = "\(minutes!) : \(seconds!)"
+
+        if seconds == "00" {
+            guestImage1.image = UIImage(named: "guest.png")
+        }
+        if seconds == "08" {
+            guestImage1.image = UIImage(named: "angry.png")
+        }
         if seconds == "15" {
+            guestImage1.image = UIImage(named: "angry.png")
             count += -1
             countLabel.text = String(count)
             guestTime1 = 0
@@ -582,7 +610,6 @@ class ViewController: UIViewController {
     }
     
     @objc func guestTimerCallback2() {
-        guestImage2.image = UIImage(named: "guest.png")
         guestTime2 += 1
         
         var minutes: String?
@@ -599,8 +626,15 @@ class ViewController: UIViewController {
         } else {
             seconds = "\(guestTime2/60)"
         }
-        secondGuestTimeLabel.text = "\(minutes!) : \(seconds!)"
+    
+        if seconds == "00" {
+            guestImage2.image = UIImage(named: "guest.png")
+        }
+        if seconds == "08" {
+            guestImage2.image = UIImage(named: "angry.png")
+        }
         if seconds == "15" {
+            guestImage1.image = UIImage(named: "angry.png")
             count += -1
             countLabel.text = String(count)
             guestTime2 = 0
@@ -609,7 +643,6 @@ class ViewController: UIViewController {
     }
     
     @objc func guestTimerCallback3() {
-        guestImage3.image = UIImage(named: "guest.png")
         guestTime3 += 1
         
         var minutes: String?
@@ -626,8 +659,15 @@ class ViewController: UIViewController {
         } else {
             seconds = "\(guestTime3/60)"
         }
-        thirdGuestTimeLabel.text = "\(minutes!) : \(seconds!)"
+    
+        if seconds == "00" {
+            guestImage3.image = UIImage(named: "guest.png")
+        }
+        if seconds == "08" {
+            guestImage3.image = UIImage(named: "angry.png")
+        }
         if seconds == "15" {
+            guestImage1.image = UIImage(named: "angry.png")
             count += -1
             countLabel.text = String(count)
             guestTime3 = 0
@@ -652,7 +692,7 @@ class ViewController: UIViewController {
         } else {
             seconds = "\(bbangTime1/60)"
         }
-        bbangTimeLabel.text = "\(minutes!) : \(seconds!)"
+      
         if seconds == "05" {
             bbangImage.image = UIImage(named:"bbang4.png")
             bbang1IsCompleted = true
@@ -664,7 +704,7 @@ class ViewController: UIViewController {
         if seconds == "10" {
             bbangTimer1.invalidate()
             bbang1IsCompleted = false
-            bbangImage.image = UIImage(named:"bbang5.jpeg")
+            bbangImage.image = UIImage(named:"bbang5.png")
             tapped1 = UITapGestureRecognizer(target: self, action: #selector(imageChange(_:)))
             tapped1.numberOfTapsRequired = 1
             self.bbangImage.addGestureRecognizer(tapped1)
@@ -690,7 +730,7 @@ class ViewController: UIViewController {
         } else {
             seconds = "\(bbangTime2/60)"
         }
-        bbangTimeLabel2.text = "\(minutes!) : \(seconds!)"
+        
         if seconds == "05" {
             bbangImage2.image = UIImage(named:"bbang4.png")
             bbang2IsCompleted = true
@@ -701,7 +741,7 @@ class ViewController: UIViewController {
         }
         if seconds == "10" {
             bbang2IsCompleted = false
-            bbangImage2.image = UIImage(named:"bbang5.jpeg")
+            bbangImage2.image = UIImage(named:"bbang5.png")
             tapped2 = UITapGestureRecognizer(target: self, action: #selector(imageChange(_:)))
             tapped2.numberOfTapsRequired = 1
             self.bbangImage2.addGestureRecognizer(tapped2)
@@ -726,7 +766,7 @@ class ViewController: UIViewController {
         } else {
             seconds = "\(bbangTime3/60)"
         }
-        bbangTimeLabel3.text = "\(minutes!) : \(seconds!)"
+       
         
         if seconds == "05" {
             bbangImage3.image = UIImage(named:"bbang4.png")
@@ -738,7 +778,7 @@ class ViewController: UIViewController {
         }
         if seconds == "10" {
             bbang3IsCompleted = false
-            bbangImage3.image = UIImage(named:"bbang5.jpeg")
+            bbangImage3.image = UIImage(named:"bbang5.png")
             tapped3 = UITapGestureRecognizer(target: self, action: #selector(imageChange(_:)))
             tapped3.numberOfTapsRequired = 1
             self.bbangImage3.addGestureRecognizer(tapped3)
@@ -763,7 +803,7 @@ class ViewController: UIViewController {
         } else {
             seconds = "\(bbangTime4/60)"
         }
-        //bbangTimeLabel3.text = "\(minutes!) : \(seconds!)"
+        
         if seconds == "05" {
             bbangImage4.image = UIImage(named:"bbang4.png")
             bbang4IsCompleted = true
@@ -774,7 +814,7 @@ class ViewController: UIViewController {
         }
         if seconds == "10" {
             bbang4IsCompleted = false
-            bbangImage4.image = UIImage(named:"bbang5.jpeg")
+            bbangImage4.image = UIImage(named:"bbang5.png")
             tapped4 = UITapGestureRecognizer(target: self, action: #selector(imageChange(_:)))
             tapped4.numberOfTapsRequired = 1
             self.bbangImage4.addGestureRecognizer(tapped4)
