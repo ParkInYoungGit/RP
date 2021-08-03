@@ -83,7 +83,9 @@ class ViewController: UIViewController {
         prepareGame()
         print("viewDidLoad")
         count = 0
+        bbangCount = 0
         countLabel.text = String(count)
+        bbangCoungLabel.text = String(bbangCount)
         finishView.isHidden = true
         firstImageChange()
         bbangPoint()
@@ -424,6 +426,7 @@ class ViewController: UIViewController {
     // 게임 시작 버튼 눌렀을 때
     @IBAction func btnStart(_ sender: Any) {
         startGame()
+        bbangCoungLabel.text = String(bbangCount)
         countLabel.text = String(count)
         prepareView.isHidden = true
         finishView.isHidden = true
@@ -478,6 +481,7 @@ class ViewController: UIViewController {
     // 게임 종료
     func finishGame(){
         finishView.isHidden = false
+        bbangCoungLabel.text = String(bbangCount)
         finishCount.text = String(count)
         resetTimer()
         
@@ -496,6 +500,7 @@ class ViewController: UIViewController {
         bbangTimer1.invalidate()
         bbangTimer2.invalidate()
         bbangTimer3.invalidate()
+        bbangTimer4.invalidate()
     }
     
     //MARK: -Timer
@@ -569,7 +574,10 @@ class ViewController: UIViewController {
             seconds = "\(totalTime/60)"
         }
         totalTimeLabel.text = "\(minutes!) : \(seconds!)"
-        if minutes == "01" {
+        if count == -3 {
+            finishGame()
+        }
+        if seconds == "30" {
             finishGame()
         }
 }
