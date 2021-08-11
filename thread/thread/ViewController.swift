@@ -724,6 +724,8 @@ class ViewController: UIViewController {
     @objc func bbangTimerCallback2() {
         bbangTime2 += 1
         
+        // 숫자 문자 구별잘하기
+        
         var minutes: String?
         var seconds: String?
         
